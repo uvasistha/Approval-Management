@@ -4,10 +4,10 @@ import EditPopup from './EditPopup.js';
 
 class Dash extends React.Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            level : 0,
+            level : this.props.level,
             orderList : [{
                 orderDate : "01/01/2020",
                 approvedBy :"David_Lee",
