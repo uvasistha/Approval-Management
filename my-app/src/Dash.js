@@ -18,7 +18,7 @@ class Dash extends React.Component{
                 companyID : "XYZ1",
                 orderAmount : "5000",
                 approvalStatus :"Approved",
-                Notes :"Notes"
+                Notes :"Approved by David_Lee"
             },
             {
                 orderDate : "01/01/2020",
@@ -28,7 +28,7 @@ class Dash extends React.Component{
                 companyID : "XYZ2",
                 orderAmount : "12000",
                 approvalStatus :"Awaiting Approval",
-                Notes :"Notes"
+                Notes :"Awaiting Approval by Laura"
             },
             {
                 orderDate : "01/01/2020",
@@ -38,7 +38,77 @@ class Dash extends React.Component{
                 companyID : "XYZ3",
                 orderAmount : "250000",
                 approvalStatus :"Awaiting Approval",
-                Notes :"Notes"
+                Notes :"Awaiting Approval by Mathew"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"David_Lee",
+                orderID :"0001",
+                companyName : "ABCDE",
+                companyID : "XYZ1",
+                orderAmount : "5000",
+                approvalStatus :"Approved",
+                Notes :"Approved by David_Lee"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"",
+                orderID :"0002",
+                companyName : "ABCDE",
+                companyID : "XYZ2",
+                orderAmount : "12000",
+                approvalStatus :"Awaiting Approval",
+                Notes :"Awaiting Approval by Laura"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"",
+                orderID :"0003",
+                companyName : "ABCDE",
+                companyID : "XYZ3",
+                orderAmount : "250000",
+                approvalStatus :"Awaiting Approval",
+                Notes :"Awaiting Approval by Mathew"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"David_Lee",
+                orderID :"0001",
+                companyName : "ABCDE",
+                companyID : "XYZ1",
+                orderAmount : "5000",
+                approvalStatus :"Approved",
+                Notes :"Approved by David_Lee"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"",
+                orderID :"0002",
+                companyName : "ABCDE",
+                companyID : "XYZ2",
+                orderAmount : "12000",
+                approvalStatus :"Awaiting Approval",
+                Notes :"Awaiting Approval by Laura"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"",
+                orderID :"0003",
+                companyName : "ABCDE",
+                companyID : "XYZ3",
+                orderAmount : "250000",
+                approvalStatus :"Awaiting Approval",
+                Notes :"Awaiting Approval by Mathew"
+            },
+            {
+                orderDate : "01/01/2020",
+                approvedBy :"",
+                orderID :"0003",
+                companyName : "ABCDE",
+                companyID : "XYZ3",
+                orderAmount : "250000",
+                approvalStatus :"Awaiting Approval",
+                Notes :"Awaiting Approval by Mathew"
             }
             ],
             searchValueText : "",
@@ -190,120 +260,128 @@ class Dash extends React.Component{
     render(){
         return(
             <div>
-                <img src={HRC}/>
+                <div>
+                <img src={HRC} className="left"/>
                 <img src={ABC} className="center"/>
-                {this.state.level===0?
-                <div>
-                <button className="button" onClick={this.onAdd}>ADD</button>
-                {this.state.checkedId!==-1?
-                <button className="button" onClick={this.onEdit}>EDIT</button>
-                :<button className="buttondisabled" disabled>EDIT</button>}
-                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
+                <br/>
                 </div>
-                :null}
 
-                {this.state.level!==0?
-                <div>
-                {(this.state.checkedId!==-1)?
-                <div>
-                <button className="button" onClick={this.onApprove}>APPROVE</button>
-                <button className="button" onClick={this.onReject}>REJECT</button>
-                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
-                </div>
-                :
-                <div>
-                <button className="buttondisabled" disabled>APPROVE</button>
-                <button className="buttondisabled" disabled>REJECT</button>
-                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
-                 </div>
-                }
-                </div>
-                :null}
+                <div className="content">
+                        {this.state.level===0?
+                        <div>
+                        <button className="button" onClick={this.onAdd}>ADD</button>
+                        {this.state.checkedId!==-1?
+                        <button className="button" onClick={this.onEdit}>EDIT</button>
+                        :<button className="buttondisabled" disabled>EDIT</button>}
+                        <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
+                        </div>
+                        :null}
 
-               
-                <table style={{width: '100%'}}>
-                    <thead>
-                    <tr className='headrow' >
-                         <th> Select</th>
-                         <th> Order Date </th>
-                         <th> Approved By </th>
-                         <th> Order ID </th>
-                         <th> Company Name </th>
-                         <th> Company ID </th>
-                         <th> Order Amount </th>
-                         <th> Approval Status </th>
-                         <th> Notes </th>
-                    </tr>
-                    </thead>
-                    <hr className='hrdesign'/>
-                    <tbody>
-                   {
-                       this.state.orderList.map(
-                           (rowData,key)=>{
-                               if(key%2==0)
-                               return(
-                               <tr className='tablerow' id={key}>
-                                   <td> <label><input type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
-                                   <td>{rowData.orderDate}</td>
-                                   <td>{rowData.approvedBy}</td>
-                                   <td>{rowData.orderID}</td>
-                                   <td>{rowData.companyName}</td>
-                                   <td>{rowData.companyID}</td>
-                                   <td>{rowData.orderAmount}</td>
-                                   <td>{rowData.approvalStatus}</td>
-                                   <td>{rowData.Notes}</td>
-                               </tr>)
-                               else
-                               return(
-                                <tr className='tablerowalt' id={key}>
-                                    <td> <label><input type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
-                                    <td>{rowData.orderDate}</td>
-                                    <td>{rowData.approvedBy}</td>
-                                    <td>{rowData.orderID}</td>
-                                    <td>{rowData.companyName}</td>
-                                    <td>{rowData.companyID}</td>
-                                    <td>{rowData.orderAmount}</td>
-                                    <td>{rowData.approvalStatus}</td>
-                                    <td>{rowData.Notes}</td>
-                                </tr>)
-                           }
-                       )
-                   }
-                   </tbody>
-                </table>
-                <div className="fontNormal">
-                    {this.state.currentPage===1
-                    ?<button className="pagedisbaled" onClick={this.onFirstPage.bind(this)} disabled>{'<<'}</button>
-                    :<button className="page" onClick={this.onFirstPage.bind(this)}>{'<<'}</button>
-                    }
-                    {this.state.currentPage===1
-                    ?<button className="pagedisbaled" onClick={this.onPrevPage.bind(this)} disabled>{'< '}</button>
-                    :<button className="page" onClick={this.onPrevPage.bind(this)}>{'< '}</button>
-                    }
-                    Page
-                    <button className="page">{this.state.currentPage}</button>
-                    of {this.state.totalPage}
-                    {this.state.currentPage===this.state.totalPage
-                    ?<button className="pagedisbaled" onClick={this.onNextPage.bind(this)}disabled>{'> '}</button>
-                    :<button className="page" onClick={this.onNextPage.bind(this)}>{'> '}</button>
-                    }
-                    {this.state.currentPage===this.state.totalPage
-                    ?<button className="pagedisbaled" onClick={this.onLastPage.bind(this)}disabled>{'>>'}</button>
-                    :<button className="page" onClick={this.onLastPage.bind(this)}>{'>>'}</button>
-                    }
-                
-                </div>
-                <AddPopup show={this.state.addMode} setShow={this.hideAddPopup}/>
-                { this.state.checkedId===-1?null:
-                <div>
-                <EditPopup show={this.state.editMode} setShow={this.hideEditPopup}
-                orderID = {this.state.orderList[this.state.checkedId.toString().substr(9)].orderID}
-                orderAmount = { this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount}
-                Notes ={ this.state.orderList[this.state.checkedId.toString().substr(9)].Notes}
-                approvalBy ={ this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount<=10000?"David_Lee":this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount>50000?"Matthew_Vance":"Laura_Smith"}
-                />
-                </div>
-                }
+                        {this.state.level!==0?
+                        <div>
+                        {(this.state.checkedId!==-1)?
+                        <div>
+                        <button className="button" onClick={this.onApprove}>APPROVE</button>
+                        <button className="button" onClick={this.onReject}>REJECT</button>
+                        <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
+                        </div>
+                        :
+                        <div>
+                        <button className="buttondisabled" disabled>APPROVE</button>
+                        <button className="buttondisabled" disabled>REJECT</button>
+                        <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
+                        </div>
+                        }
+                        </div>
+                        :null}
+
+                        <br/>
+                        <table className="tableWhole">
+                            <thead>
+                            <tr className='headrow' >
+                                <th> Select</th>
+                                <th> Order Date </th>
+                                <th> Approved By </th>
+                                <th> Order ID </th>
+                                <th> Company Name </th>
+                                <th> Company ID </th>
+                                <th> Order Amount </th>
+                                <th> Approval Status </th>
+                                <th> Notes </th>
+                            </tr>
+                            </thead>
+                            <hr className='hrdesign'/>
+                            <br/>
+                            <tbody>
+                        {
+                            this.state.orderList.map(
+                                (rowData,key)=>{
+                                    if(key%2==0)
+                                    return(
+                                    <tr className='tablerow' id={key}>
+                                        <td> <label><input className="checkbox" type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
+                                        <td>{rowData.orderDate}</td>
+                                        <td>{rowData.approvedBy}</td>
+                                        <td>{rowData.orderID}</td>
+                                        <td>{rowData.companyName}</td>
+                                        <td>{rowData.companyID}</td>
+                                        <td>{rowData.orderAmount}</td>
+                                        <td>{rowData.approvalStatus}</td>
+                                        <td>{rowData.Notes}</td>
+                                    </tr>)
+                                    else
+                                    return(
+                                        <tr className='tablerowalt' id={key}>
+                                            <td> <label><input type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
+                                            <td>{rowData.orderDate}</td>
+                                            <td>{rowData.approvedBy}</td>
+                                            <td>{rowData.orderID}</td>
+                                            <td>{rowData.companyName}</td>
+                                            <td>{rowData.companyID}</td>
+                                            <td>{rowData.orderAmount}</td>
+                                            <td>{rowData.approvalStatus}</td>
+                                            <td>{rowData.Notes}</td>
+                                        </tr>)
+                                }
+                            )
+                        }
+                        </tbody>
+                        </table>
+                        <br/>
+                        <div className="fontNormal">
+                            {this.state.currentPage===1
+                            ?<button className="pagedisbaled" onClick={this.onFirstPage.bind(this)} disabled>{'<<'}</button>
+                            :<button className="page" onClick={this.onFirstPage.bind(this)}>{'<<'}</button>
+                            }
+                            {this.state.currentPage===1
+                            ?<button className="pagedisbaled" onClick={this.onPrevPage.bind(this)} disabled>{'< '}</button>
+                            :<button className="page" onClick={this.onPrevPage.bind(this)}>{'< '}</button>
+                            }
+                            Page
+                            <button className="page">{this.state.currentPage}</button>
+                            of {this.state.totalPage}
+                            {this.state.currentPage===this.state.totalPage
+                            ?<button className="pagedisbaled" onClick={this.onNextPage.bind(this)}disabled>{'> '}</button>
+                            :<button className="page" onClick={this.onNextPage.bind(this)}>{'> '}</button>
+                            }
+                            {this.state.currentPage===this.state.totalPage
+                            ?<button className="pagedisbaled" onClick={this.onLastPage.bind(this)}disabled>{'>>'}</button>
+                            :<button className="page" onClick={this.onLastPage.bind(this)}>{'>>'}</button>
+                            }
+                        
+                        </div>
+                    </div>
+                    <AddPopup show={this.state.addMode} setShow={this.hideAddPopup}/>
+                        { this.state.checkedId===-1?null:
+                        <div>
+                        <EditPopup show={this.state.editMode} setShow={this.hideEditPopup}
+                        orderID = {this.state.orderList[this.state.checkedId.toString().substr(9)].orderID}
+                        orderAmount = { this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount}
+                        Notes ={ this.state.orderList[this.state.checkedId.toString().substr(9)].Notes}
+                        approvalBy ={ this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount<=10000?"David_Lee":this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount>50000?"Matthew_Vance":"Laura_Smith"}
+                        />
+                        </div>
+                        }
             </div>
         )
     }

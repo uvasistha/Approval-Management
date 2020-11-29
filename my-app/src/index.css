@@ -2,22 +2,26 @@
   background-color: #ed7d0c;
   border: none;
   color: white;
-  padding: 10px 22px;
+  padding: 10px 32px;
   text-align: center;
   display: inline-block;
   font-size: 12px;
   border-radius: 8px;
+  margin-right:5px;
+  margin-left:5px;
 }
 .buttondisabled{
   background-color: #d8d8d8;
   border: none;
   color: white;
-  padding: 10px 22px;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   border-radius: 8px;
+  margin-right:5px;
+  margin-left:5px;
 }
 .textbox{
   border: none;
@@ -30,15 +34,37 @@
   color: #666666;
 }
 .center {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  position: absolute;
+  left: 35%;
+  z-index:100;
+}
+.left {
+  position: absolute;
+  top: 2%;
+  z-index:100;
+}
+.content{
+position: absolute;
+margin-top: 5%;
+width: 99%;
+}
+.checkbox{
+  border: #ed7d0c;
+  color: #ed7d0c;
+  background-color: #ed7d0c;
+}
+.checkbox::after{
+  border: #ed7d0c;
+  color: #ed7d0c;
+  background-color: #ed7d0c;
 }
 .searchbox{
   border: none;
   padding: 10px 22px;
   background-color: #cbe9f7;
   color: #666666;
+  position: absolute;
+  right: 2%;
  /* background-image: url('search.png');
   background-position: 7px 7px;
   background-size: 10px 10px;
@@ -57,30 +83,37 @@
   color: #666666;
 }
 table,th, td {
-  padding: 5px;
+  padding: 2px;
+  border-spacing: 0px;
+}
+.tableWhole{
+  width:99%
 }
 .hrdesign{
   background-color: #ed7d0c;
-  width: 100%;
+  width: 99%;
   height: 2px;
   border: none;
-  
+  position: absolute;
 }
 .popupouter{
   position: absolute;
-  top: 0px;
+  top: 0%;
   z-index: 101;
   background-color: white;
-  width: 100%;
+  width: 99%;
   height: 100%;
   opacity: 0.9;
+  margin-top: 0%;
 }
 .popupinner{
   opacity: 1;
   position: absolute;
-  top:150px;
-  left:150px;
-  border : 2px oldlace
+  top: 15%;
+  left: 30%;
+  width: 50%;
+  height: 50%;
+  z-index: 102;
 }
 .textboxpopup{
   border: none;
