@@ -271,25 +271,25 @@ class Dash extends React.Component{
                    }
                    </tbody>
                 </table>
-                <div>
+                <div className="fontNormal">
                     {this.state.currentPage===1
-                    ?<button onClick={this.onFirstPage.bind(this)} disabled>first</button>
-                    :<button onClick={this.onFirstPage.bind(this)}>first</button>
+                    ?<button className="pagedisbaled" onClick={this.onFirstPage.bind(this)} disabled>{'<<'}</button>
+                    :<button className="page" onClick={this.onFirstPage.bind(this)}>{'<<'}</button>
                     }
                     {this.state.currentPage===1
-                    ?<button onClick={this.onPrevPage.bind(this)} disabled>prve</button>
-                    :<button onClick={this.onPrevPage.bind(this)}>prev</button>
+                    ?<button className="pagedisbaled" onClick={this.onPrevPage.bind(this)} disabled>{'< '}</button>
+                    :<button className="page" onClick={this.onPrevPage.bind(this)}>{'< '}</button>
                     }
                     Page
-                    <button>{this.state.currentPage}</button>
+                    <button className="page">{this.state.currentPage}</button>
                     of {this.state.totalPage}
                     {this.state.currentPage===this.state.totalPage
-                    ?<button onClick={this.onNextPage.bind(this)}disabled>next</button>
-                    :<button onClick={this.onNextPage.bind(this)}>next</button>
+                    ?<button className="pagedisbaled" onClick={this.onNextPage.bind(this)}disabled>{'> '}</button>
+                    :<button className="page" onClick={this.onNextPage.bind(this)}>{'> '}</button>
                     }
                     {this.state.currentPage===this.state.totalPage
-                    ?<button onClick={this.onLastPage.bind(this)}disabled>last</button>
-                    :<button onClick={this.onLastPage.bind(this)}>last</button>
+                    ?<button className="pagedisbaled" onClick={this.onLastPage.bind(this)}disabled>{'>>'}</button>
+                    :<button className="page" onClick={this.onLastPage.bind(this)}>{'>>'}</button>
                     }
                 
                 </div>

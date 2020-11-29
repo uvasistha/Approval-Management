@@ -39,7 +39,11 @@
   padding: 10px 22px;
   background-color: #cbe9f7;
   color: #666666;
-  
+ /* background-image: url('search.png');
+  background-position: 7px 7px;
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 10px;*/
 }
 .headrow{
   color: #666666;
@@ -83,4 +87,24 @@ table,th, td {
   border-bottom: 2px solid #7a7672;
   color: #666666;
   width: 100%;
+}
+.page{
+  background-color: #cbe9f7;
+  color: #71b2ee;
+  border: white;
+  padding: 5px 5px;
+  margin-right:5px;
+  margin-left:5px;
+  font-weight: bold;
+  width: 25px;
+}
+.pagedisbaled{
+  background-color: #dfe6e6;
+  color: #a7c1da;
+  border: white;
+  padding: 5px 5px;
+  margin-right:5px;
+  margin-left:5px;
+  font-weight: bold;
+  width: 25px;
 }
