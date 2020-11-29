@@ -2,31 +2,85 @@
   background-color: #ed7d0c;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 22px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 8px;
 }
 .buttondisabled{
   background-color: #d8d8d8;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 8px;
 }
 .textbox{
   border: none;
   border-bottom: 2px solid #ed7d0c;
-  background-color: #d8d8d8;
+  background-color: #cbe9f7;
   color: #666666;
-  width: 100;
+  width: 100%;
 }
 .fontNormal{
   color: #666666;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.searchbox{
+  border: none;
+  padding: 10px 22px;
+  background-color: #cbe9f7;
+  color: #666666;
+  
+}
+.headrow{
+  color: #666666;
+  text-align: left;
+}
+.tablerowalt{
+  background-color: #cbe9f7;
+  color: #666666;
+}
+.tablerow{
+  color: #666666;
+}
+table,th, td {
+  padding: 5px;
+}
+.hrdesign{
+  background-color: #ed7d0c;
+  width: 100%;
+  height: 2px;
+  border: none;
+  
+}
+.popupouter{
+  position: absolute;
+  top: 0px;
+  z-index: 101;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+.popupinner{
+  opacity: 1;
+  position: absolute;
+  top:150px;
+  left:150px;
+  border : 2px oldlace
+}
+.textboxpopup{
+  border: none;
+  border-bottom: 2px solid #7a7672;
+  color: #666666;
+  width: 100%;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CLOSE from './close.png'
 class EditPopup extends React.Component{
 
     constructor(props){
@@ -80,26 +80,28 @@ class EditPopup extends React.Component{
         if(this.state.show !== true)
         return null
         return(
-            <div>
-                <div>EDIT ORDER</div>
-                <div> <button onClick={this.onClose}>Close</button></div>
-                <div>
-                    Order ID
-                    <input type = "text" value={this.state.orderID} onChange={this.onIDchange.bind(this)} disabled/>
+            <div className="popupouter">
+                <div className="popupinner fontNormal">
+                <div><font size="5" className = "fontNormal">EDIT ORDER</font>
+                    <img src={CLOSE} style={{width: '15px'}} onClick={this.onClose}/></div>
+                    <tr>
+                       <td> Order ID</td>
+                       <td><input className="textboxpopup" type = "text" value={this.state.orderID} onChange={this.onIDchange.bind(this)} disabled/></td>
+                    </tr>
+                    <tr>
+                    <td>Order Amount </td> 
+                        <td><input className="textboxpopup" type = "text" value={this.state.orderAmount} onChange={this.onOrderAmount.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td>Notes</td>
+                    <td><input className="textboxpopup" type = "text" value={this.state.Notes} onChange={this.onNotes.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td>Approval By</td>
+                        <td><input className="textboxpopup" type = "text" value={this.state.approvalBy} onChange={this.onapprovalBy.bind(this)} disabled/></td>
+                    </tr>
+                    <button className="button" onClick={this.onSave}>SUBMIT</button>
                 </div>
-                <div>
-                    Order Amount  
-                    <input type = "text" value={this.state.orderAmount} onChange={this.onOrderAmount.bind(this)}/>
-                </div>
-                <div>
-                    Notes
-                    <input type = "text" value={this.state.Notes} onChange={this.onNotes.bind(this)}/>
-                </div>
-                <div>
-                    Approval By
-                    <input type = "text" value={this.state.approvalBy} onChange={this.onapprovalBy.bind(this)} disabled/>
-                </div>
-                <button onClick={this.onSave}>SUBMIT</button>
             </div>
         )
     }

@@ -6,7 +6,7 @@ import Login from './Login';
 function App() {
   return (
     <div >
-     <Login/>
+     <Dash level={0} />
     </div>
   );
 }

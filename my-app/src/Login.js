@@ -35,7 +35,7 @@ class Login extends React.Component{
         console.log(this.state.id+this.state.pass)
 
         //true
-        //this.setState({allow:true})
+        this.setState({allow:true})
 
         //false
         //this.setState({allow:false})

@@ -1,6 +1,8 @@
 import React from 'react';
 import AddPopup from './AddPopup.js';
 import EditPopup from './EditPopup.js';
+import HRC from './hrc-logo.svg'
+import ABC from './abc-logo.png'
 
 class Dash extends React.Component{
 
@@ -188,14 +190,15 @@ class Dash extends React.Component{
     render(){
         return(
             <div>
-                <div>LOGO 1 </div>
-                <div>LOGO 2 </div>
+                <img src={HRC}/>
+                <img src={ABC} className="center"/>
                 {this.state.level===0?
                 <div>
-                <button onClick={this.onAdd}>ADD</button>
+                <button className="button" onClick={this.onAdd}>ADD</button>
                 {this.state.checkedId!==-1?
-                <button onClick={this.onEdit}>EDIT</button>
-                :<button disabled>EDIT</button>}
+                <button className="button" onClick={this.onEdit}>EDIT</button>
+                :<button className="buttondisabled" disabled>EDIT</button>}
+                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
                 </div>
                 :null}
 
@@ -203,22 +206,24 @@ class Dash extends React.Component{
                 <div>
                 {(this.state.checkedId!==-1)?
                 <div>
-                <button onClick={this.onApprove}>APPROVE</button>
-                <button onClick={this.onReject}>REJECT</button>
+                <button className="button" onClick={this.onApprove}>APPROVE</button>
+                <button className="button" onClick={this.onReject}>REJECT</button>
+                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
                 </div>
                 :
                 <div>
-                <button disabled>APPROVE</button>
-                <button disabled>REJECT</button>
+                <button className="buttondisabled" disabled>APPROVE</button>
+                <button className="buttondisabled" disabled>REJECT</button>
+                <input className="searchbox" type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
                  </div>
                 }
                 </div>
                 :null}
 
-                <input type ="search" onKeyPress={this.onSearch} onChange={this.onSearchTextChange} value = {this.state.searchValueText} placeholder="Search"/>
-                <table>
+               
+                <table style={{width: '100%'}}>
                     <thead>
-                    <tr style={{border :'2'}}>
+                    <tr className='headrow' >
                          <th> Select</th>
                          <th> Order Date </th>
                          <th> Approved By </th>
@@ -230,12 +235,14 @@ class Dash extends React.Component{
                          <th> Notes </th>
                     </tr>
                     </thead>
+                    <hr className='hrdesign'/>
                     <tbody>
                    {
                        this.state.orderList.map(
                            (rowData,key)=>{
+                               if(key%2==0)
                                return(
-                               <tr id={key}>
+                               <tr className='tablerow' id={key}>
                                    <td> <label><input type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
                                    <td>{rowData.orderDate}</td>
                                    <td>{rowData.approvedBy}</td>
@@ -246,6 +253,19 @@ class Dash extends React.Component{
                                    <td>{rowData.approvalStatus}</td>
                                    <td>{rowData.Notes}</td>
                                </tr>)
+                               else
+                               return(
+                                <tr className='tablerowalt' id={key}>
+                                    <td> <label><input type ="checkbox" id={"tableData"+key} onChange={this.onCheck} name="tableCheck" /> </label> </td>
+                                    <td>{rowData.orderDate}</td>
+                                    <td>{rowData.approvedBy}</td>
+                                    <td>{rowData.orderID}</td>
+                                    <td>{rowData.companyName}</td>
+                                    <td>{rowData.companyID}</td>
+                                    <td>{rowData.orderAmount}</td>
+                                    <td>{rowData.approvalStatus}</td>
+                                    <td>{rowData.Notes}</td>
+                                </tr>)
                            }
                        )
                    }

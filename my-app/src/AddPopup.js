@@ -1,4 +1,5 @@
 import React from 'react';
+import CLOSE from './close.png'
 
 class AddPopup extends React.Component{
 
@@ -98,34 +99,36 @@ class AddPopup extends React.Component{
         if(this.state.show !== true)
         return null
         return(
-            <div>
-                <div>ADD ORDER</div>
-                <div> <button onClick={this.onClose}>Close</button></div>
-                <div>
-                    Order ID 
-                    <input type = "text" value={this.state.orderID} onChange={this.onorderID.bind(this)}/>
+            <div className="popupouter">
+                <div className="popupinner fontNormal">
+                    <div><font size="5" className = "fontNormal">ADD ORDER</font>
+                    <img src={CLOSE} style={{width: '15px'}} onClick={this.onClose}/></div>
+                    <tr>
+                    <td>Order ID </td>
+                    <td> <input className="textboxpopup" type = "text" value={this.state.orderID} onChange={this.onorderID.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td>Order Date </td>
+                    <td><input className="textboxpopup" type = "text" value={this.state.orderDate} onChange={this.onOrderDate.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td>Customer Name </td>
+                    <td> <input className="textboxpopup" type = "text" value={this.state.companyName} onChange={this.oncompanyName.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td> Customer Number </td>
+                    <td><input className="textboxpopup" type = "text" value={this.state.companyID} onChange={this.oncompanyID.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td> Order Amount  </td>
+                    <td><input className="textboxpopup" type = "text" value={this.state.orderAmount} onChange={this.onorderAmount.bind(this)}/></td>
+                    </tr>
+                    <tr>
+                    <td>Notes</td>
+                    <td><input className="textboxpopup" type = "text" value={this.state.Notes} onChange={this.onNotes.bind(this)}/></td>
+                    </tr>
+                    <button className="button" onClick ={this.onSave}>ADD</button>
                 </div>
-                <div>
-                    Order Date 
-                    <input type = "text" value={this.state.orderDate} onChange={this.onOrderDate.bind(this)}/>
-                </div>
-                <div>
-                    Customer Name 
-                    <input type = "text" value={this.state.companyName} onChange={this.oncompanyName.bind(this)}/>
-                </div>
-                <div>
-                    Customer Number 
-                    <input type = "text" value={this.state.companyID} onChange={this.oncompanyID.bind(this)}/>
-                </div>
-                <div>
-                    Order Amount  
-                    <input type = "text" value={this.state.orderAmount} onChange={this.onorderAmount.bind(this)}/>
-                </div>
-                <div>
-                    Notes
-                    <input type = "text" value={this.state.Notes} onChange={this.onNotes.bind(this)}/>
-                </div>
-                <button onClick ={this.onSave}>ADD</button>
             </div>
         )
     }
