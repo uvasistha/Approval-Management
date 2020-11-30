@@ -5,8 +5,10 @@ import Login from './Login';
 
 function App() {
   return (
-    <div >
-     <Dash level={0} />
+    <div className="out">
+    <div className="in">
+     <Login/>
+    </div>
     </div>
   );
 }
