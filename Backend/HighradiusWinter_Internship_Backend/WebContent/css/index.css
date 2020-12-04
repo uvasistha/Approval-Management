@@ -1,0 +1,101 @@
+*{
+	box-sizing:border-box;
+}
+body{
+	margin: 10px;
+	padding: 10px;
+	background-image: url("human-machine-hand-homepage.svg");
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
+	font-family: sans-serif;
+}
+
+.flip-horizontally {
+  transform: scaleX(-1);
+}
+
+.logo{
+    position: relative;
+}
+.logo img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.logbox{
+  position:absolute;
+  top:60%;
+  right:15%;
+  transform: translate(-50%, -50%);
+  color:white;
+  height: 350px;
+  width: 400px;
+  padding: 60px 40px;
+}
+
+.btn{
+	position: fixed;
+	left: 0%;
+	display: block;
+	width: 38%;
+	height: 50px;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #8fdb63,#8fdb63,#8fdb63);
+	background-size: 200%;
+	font-size: 2.4rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: auto;
+	transition: .5s;
+
+}
+
+h2{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: left;
+  font-size: 30px;
+  color: rgb(190, 187, 187);
+}
+
+h4{
+  color: rgb(190, 187, 187);
+}
+
+.logbox label{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+	color:black;
+}
+
+.logbox input[type="text"], input[type="password"],input[type="submit"]{
+  margin-bottom: 50px;
+  width: 100%;
+
+}
+
+    
+.logbox input[type="text"], input[type="password"]{
+  border: 2px;
+  outline: 0;
+  background: #f6fcff;
+  border-bottom: 2px solid #fc7500;
+
+}
+.logbox input[type="submit"]{
+  border: none;
+  outline: none;
+  height: 30px;
+  width: 80px;
+  background:rgb(180, 176, 176);
+  font-size: 15px;
+  border-radius: 5px;
+  color: #fff;
+}
