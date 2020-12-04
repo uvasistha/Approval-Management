@@ -46,6 +46,35 @@ class AddPopup extends React.Component{
         //send to backend
         //CALL HERE
 
+        var reqdata = {
+            "orderID": this.state.orderID,
+            "companyName": this.state.companyName,
+            "companyID": this.state.companyID,
+            "orderAmount": this.state.orderAmount,
+            "approvalStatus": this.state.approvalStatus,
+            "approvedBy": this.state.approvedBy,
+            "Notes": this.state.Notes,
+            "orderDate": this.state.orderDate
+        }
+        var url = 'http://localhost:8080/1706545/order';
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reqdata),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                this.props.setShow()
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                this.props.setShow()
+            });
+
+
         //reset
         this.setState({
             orderDate : "",

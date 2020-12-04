@@ -10,6 +10,8 @@ class Dash extends React.Component{
         super(props)
         this.state = {
             level : this.props.level,
+            orderList :[],
+            /*
             orderList : [{
                 orderDate : "01/01/2020",
                 approvedBy :"David_Lee",
@@ -110,12 +112,12 @@ class Dash extends React.Component{
                 approvalStatus :"Awaiting Approval",
                 Notes :"Awaiting Approval by Mathew"
             }
-            ],
+            ],*/
             searchValueText : "",
             addMode : false,
             checkedId : -1,
             editMode :false,
-            totalPage :3,
+            totalPage :1,
             currentPage:1,
         };
         this.onAdd = this.onAdd.bind(this)
@@ -183,6 +185,27 @@ class Dash extends React.Component{
          var orderID = this.state.orderList[this.state.checkedId.toString().substr(9)].orderID
         //API HERE
         //CALL approve?orderID&level -> approve
+        var reqdata = {
+            "orderID": orderID,
+            "approvalStatus": "Approved",
+        }
+        var url = 'http://localhost:8080/1706545/Approve';
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reqdata),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                this.getRecordForPage(this.state.currentPage)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                this.getRecordForPage(this.state.currentPage)
+            });
         //refreshForOrderList
         this.getRecordForPage(this.state.currentPage)
         //uncheck post approve
@@ -196,6 +219,27 @@ class Dash extends React.Component{
         var orderID = this.state.orderList[this.state.checkedId.toString().substr(9)].orderID
         //API HERE
         //CALL approve?orderID&level ->reject
+        var reqdata = {
+            "orderID": orderID,
+            "approvalStatus": "Rejected",
+        }
+        var url = 'http://localhost:8080/1706545/Reject';
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reqdata),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                this.getRecordForPage(this.state.currentPage)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                this.getRecordForPage(this.state.currentPage)
+            });
         //refreshForOrderList
         this.getRecordForPage(this.state.currentPage)
         //uncheck post reject
@@ -208,6 +252,22 @@ class Dash extends React.Component{
         if(event.key ==='Enter'){
             //searchBackedWithFilter
             //fill orderList
+            var url = 'http://localhost:8080/1706545/Search?id='+this.state.searchValueText
+            fetch(url, {
+                method: 'GET', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ orderList: data })
+                    console.log('orderList:', data);
+                })
+                .catch((error) => {
+                    this.setState({ orderList: [] })
+                    console.error('Error:', error);
+                });
             //set page number to 1 and total page to 1
             this.setState({
                 currentPage:1,
@@ -251,8 +311,41 @@ class Dash extends React.Component{
     getRecordForPage(page){
         //Call Api with page number
         console.log("Get record for page " +page)
+        var url = 'http://localhost:8080/1706545/order?page='+page
+        fetch(url, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ orderList: data })
+                console.log('orderList:', data);
+            })
+            .catch((error) => {
+                this.setState({ orderList: [] })
+                console.error('Error:', error);
+            });
         //Set Record dataList
         //Update TotalPage
+        var url = 'http://localhost:8080/1706545/tPage';
+        fetch(url, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ totalPage: data.totalPage })
+                console.log('totalPage:', data.totalPage);
+            })
+            .catch((error) => {
+                this.setState({ totalPage: 1 })
+                console.error('totalPage:', error);
+            });
+        
     }
 
     //APPROVE REJECT LOGIC
@@ -314,6 +407,7 @@ class Dash extends React.Component{
                             <br/>
                             <tbody>
                         {
+                        
                             this.state.orderList.map(
                                 (rowData,key)=>{
                                     if(key%2==0)
@@ -344,6 +438,7 @@ class Dash extends React.Component{
                                         </tr>)
                                 }
                             )
+                           
                         }
                         </tbody>
                         </table>
@@ -378,6 +473,7 @@ class Dash extends React.Component{
                         orderID = {this.state.orderList[this.state.checkedId.toString().substr(9)].orderID}
                         orderAmount = { this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount}
                         Notes ={ this.state.orderList[this.state.checkedId.toString().substr(9)].Notes}
+                        approvalStatus ={ this.state.orderList[this.state.checkedId.toString().substr(9)].approvalStatus}
                         approvalBy ={ this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount<=10000?"David_Lee":this.state.orderList[this.state.checkedId.toString().substr(9)].orderAmount>50000?"Matthew_Vance":"Laura_Smith"}
                         />
                         </div>

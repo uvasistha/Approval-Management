@@ -23,23 +23,32 @@ class Login extends React.Component{
         this.setState({pass:e.target.value})
     }
     onLogin(){
-        if(this.state.id==="David_Lee" && this.state.pass=="Project@123" )
-            this.setState({level:0,allow:true})
-        else if(this.state.id==="Laura_Smith" && this.state.pass=="Project@1234")
-            this.setState({level:1,allow:true})
-        else if(this.state.id==="Matthew_Vance" && this.state.pass=="Project@12345") 
-            this.setState({level:2,allow:true}) 
-        else
-            this.setState({level:-1,allow:false})
         //BACEND VERIFY
         //console.log(this.state.id+this.state.pass)
-
-        //true
-        // this.setState({allow:true})
-
-        //false
-        //this.setState({allow:false})
-
+        var url = 'http://localhost:8080/1706545/Login?id='+this.state.id+'&pass='+this.state.pass;
+        fetch(url, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ allow: data.allow })
+                console.log('allow:', data);
+            })
+            .catch((error) => {
+                this.setState({ allow: false})
+                console.error('Error:', error);
+            });
+            if(this.state.id==="David_Lee" )
+            this.setState({level:0})
+        else if(this.state.id==="Laura_Smith")
+            this.setState({level:1})
+        else if(this.state.id==="Matthew_Vance") 
+            this.setState({level:2}) 
+        else
+            this.setState({level:-1,allow:false})
     }
 
     render(){
